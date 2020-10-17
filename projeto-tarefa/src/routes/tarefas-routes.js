@@ -6,7 +6,7 @@ const tarefaController = require('../controllers/tarefas-controller');
 @route GET tarefas
 @desc Retornar todas as tarefas
 @access Public 
-@endpoint http://localhost:porta/tarefas/
+@endpoint http://localhost:porta/tarefas
 **/
 router.get('/tarefas', tarefaController.obterTarefas);
 
@@ -34,29 +34,27 @@ router.get('/tarefas/:id', tarefaController.obterIdTarefa);
 router.post('/tarefas', tarefaController.criarTarefa);
 
 /**
-@route PUT tarefas
-@desc Atualizar tarefas
-@access Public 
-@endpoint http://localhost:porta/tarefas/:id
- **/
-router.put('/tarefas/:id', tarefaController.atualizarTarefa);
-
-/**
- @route PATCH tarefas
- @desc Atualizar somente o título
- @access Public
- @endpoint http://localhost:porta/tarefas/:id
- */
- router.patch('/tarefas/:id', tarefaController.atualizarCamposTarefa);
-
-/**
 @route DELETE tarefas
 @desc Deletar uma tarefa pelo seu identificador
 @access Public 
 @endpoint http://localhost:porta/tarefas/:id
 **/
-router.delete('/tarefas/:id', tarefaController.deletarTarefa);
+router.delete('/tarefas/:id', tarefaController.deletarTarefa)
 
+/**
+@route PATCH tarefas
+@desc Atualizar uma Postagem pelo seu id
+@access Public 
+@endpoint http://localhost:porta/tarefas/:id
+**/
+router.atualizar('/tarefas/:id', tarefaController.postagemAtualizada)
 
+/**
+@route PUT tarefas
+@desc Atualizar um Titulo
+@access Public 
+@endpoint http://localhost:porta/tarefas/:id
+**/
+router.atualizar('/tarefas/:id', tarefaController.atualizarTitulo)
 
 module.exports = router;
